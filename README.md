@@ -22,6 +22,7 @@ Because the authors are interested in differential expression on per gene basis 
 
 `wget https://ftp.ensembl.org/pub/release-113/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz`
 `gunzip Homo_sapiens.GRCh38.cdna.all.fa.gz`
+
 The Salmon index was then generated using the script [salmon_index.sh](https://github.com/RashmiKaldera/RNASeq_FinalProject/blob/main/Scripts/salmon_index.sh).
 ### Quantifying with Salmon Quant
 A matrix of counts was obtained for each sample using the script [salmon_quant.sh](https://github.com/RashmiKaldera/RNASeq_FinalProject/blob/main/Scripts/salmon_quant.sh).
