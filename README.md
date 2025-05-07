@@ -8,5 +8,25 @@ This project aims to develop a workflow that can be used to analyze RNASeq data 
 Setting up an interactive session
 
 `srun --pty -p general --qos=general --mem=8G bash`
+### Downloading and validating the SRR files
 
-Used the script 
+Used the script [SRRdownload.sh](https://github.com/RashmiKaldera/RNASeq_FinalProject/blob/main/Scripts/SRRdownload.sh) to download the SRR files and to validate them using the following command.
+
+`chmod +x SRRdownload.sh`
+
+`sbatch SRRdownload.sh`
+### Generating fastq files and renaming the samples
+Used `fasterq-dump` with the script [srrtofastq.sh](https://github.com/RashmiKaldera/RNASeq_FinalProject/blob/main/Scripts/srrtofastq.sh) to generate the fastq files for paired end sequencing data using the same commands as before.
+### Creating Salmon index files
+Because the authors are interested in differential expression on per gene basis and not transcript isoform levels, psuedoalignment with Salmon. To generate the Salmon index file, the human transcriptome.fa was obtained from [Ensembl](https://useast.ensembl.org/index.html) using the following command.
+
+`wget https://ftp.ensembl.org/pub/release-113/fasta/homo_sapiens/cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz`
+`gunzip Homo_sapiens.GRCh38.cdna.all.fa.gz`
+The Salmon index was then generated using the script [salmon_index.sh](https://github.com/RashmiKaldera/RNASeq_FinalProject/blob/main/Scripts/salmon_index.sh).
+### Quantifying with Salmon Quant
+A matrix of counts was obtained for each sample using the script [salmon_quant.sh](https://github.com/RashmiKaldera/RNASeq_FinalProject/blob/main/Scripts/salmon_quant.sh).
+### Downloading the salmon_quant folder for downstream analysis
+`sftp -r salmon_quant`
+### Differential gene expression analysis
+
+The downstream analysis of Deseq and ORA was performed using the produced `quant.sf` files on R studio. The complete analysis is available on 
