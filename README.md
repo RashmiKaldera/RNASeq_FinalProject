@@ -26,8 +26,8 @@ Because the authors are interested in differential expression on per gene basis 
 The Salmon index was then generated using the script [salmon_index.sh](https://github.com/RashmiKaldera/RNASeq_FinalProject/blob/main/Scripts/salmon_index.sh).
 ### Quantifying with Salmon Quant
 A matrix of counts was obtained for each sample using the script [salmon_quant.sh](https://github.com/RashmiKaldera/RNASeq_FinalProject/blob/main/Scripts/salmon_quant.sh).
-### Downloading the salmon_quant folder for downstream analysis
-`sftp -r salmon_quant`
+### Downloading the salmon_quant folder for downstream analysis using sftp
+`get -r salmon_quant` 
 ### Differential gene expression analysis
 
 The downstream analysis of Deseq and ORA was performed using the produced `quant.sf` files on R studio. The complete analysis is available on [Differential Gene Expression Analysis_SalmonQuant.rmd](https://github.com/RashmiKaldera/RNASeq_FinalProject/blob/main/R/DifferentialExpressionAnalysis_SalmonQuant.Rmd).
